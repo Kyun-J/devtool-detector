@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "minify",
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "browsers": "> 0.25%, not dead"
+        }
+      }
+    ]
+  ]
+}

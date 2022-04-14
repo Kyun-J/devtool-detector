@@ -1,0 +1,21 @@
+{
+  "name": "devtool-detector",
+  "version": "0.0.1",
+  "description": "browser devtool detector",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx babel index.origin.js -o index.js",
+    "test": "http-server ./ -o /test"
+  },
+  "author": "Kyun-J",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "babel-preset-minify": "^0.5.1"
+  },
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
