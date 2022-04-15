@@ -1,11 +1,12 @@
 {
   "presets": [
-    "minify",
     [
       "@babel/env",
       {
+        "useBuiltIns": "usage",
+        "corejs": 3,
         "targets": {
-          "browsers": "> 0.25%, not dead"
+          "browsers": "> 0.6%, not dead"
         }
       }
     ]

@@ -1,21 +1,41 @@
 {
   "name": "devtool-detector",
-  "version": "0.0.1",
-  "description": "browser devtool detector",
+  "version": "0.0.7",
+  "description": "Simple browser devtool detector",
+  "types": "index.d.ts",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
-    "build": "npx babel index.origin.js -o index.js",
-    "test": "http-server ./ -o /test"
+    "build": "webpack",
+    "test": "npm run build && http-server ./ -o /test",
+    "prepare": "npm run build"
   },
-  "author": "Kyun-J",
+  "author": "Kyun-J <dvkyun@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "devtool",
+    "detector",
+    "devtool detector"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyun-J/devtool-detector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kyun-J/devtool-detector/issues"
+  },
+  "homepage": "https://github.com/Kyun-J/devtool-detector#readme",
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "babel-preset-minify": "^0.5.1"
-  },
-  "dependencies": {
-    "http-server": "^14.1.0"
+    "@babel/runtime-corejs3": "^7.17.9",
+    "babel-loader": "^8.2.4",
+    "core-js": "^3.21.1",
+    "http-server": "^14.1.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   }
 }

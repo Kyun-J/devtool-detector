@@ -1,12 +1,17 @@
-import Detector, { addDetectListener } from "../index.origin.js";
+requirejs(['../index.js'], ({ getDetector, addDetectListener }) => {
+  const Detector = getDetector()
+  console.log(Detector)
+  Detector.setEnable(true)
 
-Detector.setEnable(true)
+  addDetectListener((isDevtoolOpen) => {
+    if (isDevtoolOpen) {
+      alert('Devtool open !!!')
+      console.count('Devtool Open Count')
+    } else alert('Devtool close !!!')
+  })
 
-addDetectListener((isDevtoolOpen) => {
-  if (isDevtoolOpen) console.count('Devtool Open Count')
+  setInterval(() => {
+    console.log(`${Date.now()} ::: Devtool open - ${Detector.isDevtoolOpen
+      }`)
+  }, 1000)
 })
-
-setInterval(() => {
-  console.log(`${Date.now()} ::: Devtool open - ${Detector.isDevtoolOpen
-    }`)
-}, 1000)

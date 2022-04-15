@@ -1,9 +1,22 @@
 type DevToolDetectListener = (isDevtoolOpen: boolean) => void;
 
+type DetectorType =
+  | "debugger"
+  | "console-elem"
+  | "console-date"
+  | "console-reg";
+
 interface _DetectorSetting {
+  nextScopeInterval: number;
+}
+
+interface _DebugDetectorSetting extends _DetectorSetting {
   scopeDebugCount: number;
   waitScopeTime: number;
-  nextScopeInterval: number;
+}
+
+interface _ConsoleDetectorSetting extends _DetectorSetting {
+  waitConsole: number;
 }
 
 interface _Detector {
@@ -13,8 +26,25 @@ interface _Detector {
   setEnable: (enable: boolean) => void;
 }
 
-declare const Detector: _Detector;
+interface _DebugDetector extends _Detector {
+  setting: _DebugDetectorSetting;
+}
 
-export default Detector;
-export function addDetectListener(listener: DevToolDetectListener): void;
-export function removeDetectListener(listener: DevToolDetectListener): void;
+interface _ConsoleDetector extends _Detector {
+  setting: _ConsoleDetectorSetting;
+}
+
+interface _BrowserDetectorConfig {
+  chrome: DetectorType;
+  safari: DetectorType;
+  firefox: DetectorType;
+  ie: DetectorType;
+  edge: DetectorType;
+  default: DetectorType;
+}
+
+export declare const BrowserDetectorConfig: _BrowserDetectorConfig;
+export const getDetector: () => _DebugDetector | _ConsoleDetector;
+export const addDetectListener: (listener: DevToolDetectListener) => void;
+export const removeDetectListener: (listener: DevToolDetectListener) => void;
+export const removeAllDetectListener: () => void;
