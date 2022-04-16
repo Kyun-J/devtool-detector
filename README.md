@@ -13,7 +13,7 @@ yarn add devtool-detector
 
 ## How to use
 
-### 활성화
+### Activate
 
 Detecting devtool open interferes with the development environment.  
 Therefore, the detection function is turned off on initial loading. Activation is required to initiate detection.
@@ -37,7 +37,7 @@ The current activation status can be determined as follows:
 detector.enable
 ```
 
-### 상태 확인
+### Check devtool status
 
 The isDevtoolOpen item in the detector provides the current open/closed status.
 
