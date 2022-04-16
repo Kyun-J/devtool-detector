@@ -2,14 +2,14 @@ import listeners from '../listeners'
 
 let _isDevtoolOpen = false
 let _isEnable = false
-let _DetectCounter = false
+let _isDetectOpen = false
 let nextScopeTimeout = null
 let waitConsoleTimeout = null
 
 const date = new Date()
 
 date.toString = () => {
-  _DetectCounter++
+  _isDetectOpen = true
   return ''
 };
 
@@ -24,11 +24,10 @@ Object.seal(setting)
 const detectStart = () => nextScopeTimeout = setTimeout(detectEvent, setting.nextScopeInterval)
 
 const detectEvent = () => {
-  _DetectCounter = 0
+  _isDetectOpen = false
   console.log(date)
   console.clear()
   waitConsoleTimeout = setTimeout(() => {
-    const _isDetectOpen = _DetectCounter === 2
     if (_isDetectOpen !== _isDevtoolOpen) {
       _isDevtoolOpen = _isDetectOpen
       for (const listener of listeners) {

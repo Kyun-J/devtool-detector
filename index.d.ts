@@ -39,7 +39,7 @@ interface _BrowserDetectorConfig {
   safari: DetectorType;
   firefox: DetectorType;
   ie: DetectorType;
-  edge: DetectorType;
+  edgeLegacy: DetectorType;
   default: DetectorType;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "devtool-detector",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple browser devtool detector",
   "types": "index.d.ts",
   "main": "index.js",
@@ -11,14 +11,15 @@
   "scripts": {
     "build": "webpack",
     "test": "npm run build && http-server ./ -o /test",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "author": "Kyun-J <dvkyun@gmail.com>",
   "license": "MIT",
   "keywords": [
     "devtool",
     "detector",
-    "devtool detector"
+    "devtool detector",
+    "devtools"
   ],
   "repository": {
     "type": "git",

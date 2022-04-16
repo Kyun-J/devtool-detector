@@ -9,13 +9,13 @@ const isChrome = typeof globalThis.window.chrome !== 'undefined' || /chrome/i.te
 const isSafari = (typeof globalThis.window.safari !== 'undefined' && (globalThis.window.safari.pushNotification.toString() === '[object SafariRemoteNotification]')) || (/safari/i.test(userAgent) && !isChrome)
 const isFirefox = 'InstallTrigger' in globalThis.window || /firefox/i.test(userAgent)
 const isIE = /trident/i.test(userAgent) || /msie/i.test(userAgent)
-const isEdge = /edge/i.test(userAgent)
+const isEdgeLegacy = /edge/i.test(userAgent)
 const isWebkit = /webkit/i.test(userAgent) && !isEdge
 
 const getBrouserName = () => {
   if (isIE) return 'ie'
   if (isFirefox) return 'firefox'
-  if (isEdge) return 'edge'
+  if (isEdgeLegacy) return 'edge'
   if (isSafari) return 'safari'
   if (isChrome) return 'chrome'
   if (isWebkit) return 'webkit'
@@ -24,7 +24,7 @@ const getBrouserName = () => {
 
 const BrowserDetectorConfig = {
   chrome: 'debugger',
-  edge: 'console-elem',
+  edgeLegacy: 'console-elem',
   ie: 'console-elem',
   safari: 'console-reg',
   firefox: 'console-reg',
