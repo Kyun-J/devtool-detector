@@ -22,7 +22,7 @@ yarn add devtool-detector
 import { getDetector } from 'devtool-detector'
 
 const detector = getDetector()
-detector.setEnable(true)
+detector.setEnable(true) // or dectector.enable = true
 ```
 
 다음 예시와 같이 테스트 환경에서는 비활성화를 권장드립니다.
@@ -48,7 +48,7 @@ detector.isDevtoolOpen
 열림/닫힘시 이벤트는 다음과 같이 확인할 수 있습니다.
 
 ```js
-import { getDetector, addDetectListener, removeDetectListener } from 'devtool-detector'
+import { getDetector, addDetectListener, removeDetectListener, removeAllDetectListener } from 'devtool-detector'
 
 getDetector().setEnable(true)
 
@@ -59,4 +59,71 @@ const listener = (isDevtoolOpen) => {
 addDetectListener(listener) // regist callback
 
 removeDetectListener(listener) // unregist callback
+
+removeAllDetectListener() // unregist all callbacks
 ```
+
+## 옵션
+
+감지기는 console 및 debugger 2가지로 동작합니다.  
+console의 설정 항목은 다음과 같습니다.
+```js
+{
+  nextScopeInterval: number; // 탐지 간격(ms) default 100
+  waitConsole: number; // console 호출 후 기다리는 시간 default 10
+  clearConsole: boolean; // console 호출 후 clear 여부 default true
+}
+```
+
+debugger의 설정 항목은 다음과 같습니다.
+```js
+{
+  nextScopeInterval: number; // 탐지 간격(ms) default 100
+  scopeDebugCount: number; // debugger를 반복 호출할 횟수 default 10
+  waitScopeTime: boolean; // debugger호출 탐지 시간 default true
+}
+```
+
+옵션은 다음과 같이 설정할 수 있습니다.
+```js
+import { getDetector } from 'devtool-detector'
+
+const detector = getDetector()
+detector.setting.nextScopeInterval = 1000
+detector.setting.clearConsole = false
+```
+
+## 브라우저별 감지기 설정
+감지기의 상세한 종류는 다음과 같습니다.
+```js
+'console-elem'
+'console-date'
+'console-reg'
+'debugger'
+```
+다음과 같이 브라우저별로 동작할 감지기를 설정할 수 있습니다.  
+이때, 반드시 `getDetector()`가 최초 호출되기 이전에만 설정할 수 있습니다.
+```js
+import { BrowserDetectorConfig } from 'devtool-detector'
+BrowserDetectorConfig.chrome = 'console-date'
+BrowserDetectorConfig.firefox = 'debugger'
+```
+단, 브라우저별로 동작하는 감지기가 다릅니다.  
+기본값으로는 아래와 같이 설정되어 있습니다.
+```js
+chrome: 'debugger'
+edgeLegacy: 'console-elem'
+ie: 'console-elem'
+safari: 'console-reg'
+firefox: 'console-reg'
+webkit: 'debugger'
+default: 'debugger'
+```
+## 지원 브라우저
+Chromiume Borwser  
+Firefox  
+Safari  
+Edge(Legacy)  
+ie(Polyfill required)
+## Todo
+브라우저/버전별 감지기 설정

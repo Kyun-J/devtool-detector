@@ -60,6 +60,7 @@ const detectEvent = (msg) => {
 detectWorker.addEventListener('message', detectEvent)
 
 const Detector = {
+  type: 'debugger',
   setting: setting,
   get isDevtoolOpen() {
     return _isDevtoolOpen
@@ -68,7 +69,7 @@ const Detector = {
     return _isEnable
   },
   set enable(enable) {
-    _isEnable = enable
+    this.setEnable(enable)
   },
   setEnable(enable) {
     if (enable === _isEnable) return

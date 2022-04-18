@@ -10,31 +10,33 @@ interface _DetectorSetting {
   nextScopeInterval: number;
 }
 
-interface _DebugDetectorSetting extends _DetectorSetting {
+interface DebugDetectorSetting extends _DetectorSetting {
   scopeDebugCount: number;
   waitScopeTime: number;
 }
 
-interface _ConsoleDetectorSetting extends _DetectorSetting {
+interface ConsoleDetectorSetting extends _DetectorSetting {
   waitConsole: number;
+  clearConsole: boolean;
 }
 
 interface _Detector {
+  type: DetectorType;
   setting: _DetectorSetting;
   readonly isDevtoolOpen: boolean;
   enable: boolean;
   setEnable: (enable: boolean) => void;
 }
 
-interface _DebugDetector extends _Detector {
-  setting: _DebugDetectorSetting;
+interface DebugDetector extends _Detector {
+  setting: DebugDetectorSetting;
 }
 
-interface _ConsoleDetector extends _Detector {
-  setting: _ConsoleDetectorSetting;
+interface ConsoleDetector extends _Detector {
+  setting: ConsoleDetectorSetting;
 }
 
-interface _BrowserDetectorConfig {
+interface BrowserDetectorConfig {
   chrome: DetectorType;
   safari: DetectorType;
   firefox: DetectorType;
@@ -43,8 +45,17 @@ interface _BrowserDetectorConfig {
   default: DetectorType;
 }
 
-export declare const BrowserDetectorConfig: _BrowserDetectorConfig;
-export const getDetector: () => _DebugDetector | _ConsoleDetector;
+export {
+  DevToolDetectListener,
+  DetectorType,
+  DebugDetector,
+  ConsoleDetector,
+  DebugDetectorSetting,
+  ConsoleDetectorSetting,
+  BrowserDetectorConfig,
+}; // type export
+export declare const BrowserDetectorConfig: BrowserDetectorConfig;
+export const getDetector: () => DebugDetector | ConsoleDetector;
 export const addDetectListener: (listener: DevToolDetectListener) => void;
 export const removeDetectListener: (listener: DevToolDetectListener) => void;
 export const removeAllDetectListener: () => void;

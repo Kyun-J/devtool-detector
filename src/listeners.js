@@ -5,4 +5,4 @@ export const removeDetectListener = (listener) => {
   const index = listeners.indexOf(listener)
   if (index !== -1) listeners.splice(index, 1)
 }
-export const removeAllDetectListener = () => { array.splice(0, listeners.length) }
+export const removeAllDetectListener = () => { listeners.splice(0, listeners.length) }

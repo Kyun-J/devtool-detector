@@ -1,6 +1,6 @@
 {
   "name": "devtool-detector",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Simple browser devtool detector",
   "types": "index.d.ts",
   "main": "index.js",

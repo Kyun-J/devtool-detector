@@ -1,7 +1,9 @@
 requirejs(['../index.js'], ({ getDetector, addDetectListener, BrowserDetectorConfig }) => {
   // BrowserDetectorConfig.chrome = 'console-date'
-  const Detector = getDetector()
-  Detector.setEnable(true)
+  const detector = getDetector()
+  // detector.setEnable(true)
+  detector.enable = true
+  // detector.setting.clearConsole = false
 
   addDetectListener((isDevtoolOpen) => {
     if (isDevtoolOpen) {
@@ -11,7 +13,7 @@ requirejs(['../index.js'], ({ getDetector, addDetectListener, BrowserDetectorCon
   })
 
   setInterval(() => {
-    console.log(`${Date.now()} ::: Devtool open - ${Detector.isDevtoolOpen
+    console.log(`${Date.now()} ::: Devtool open - ${detector.isDevtoolOpen
       }`)
   }, 1000)
 })
