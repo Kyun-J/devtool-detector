@@ -48,7 +48,7 @@ detector.isDevtoolOpen
 When opened/closed, the event can be viewed as follows:
 
 ```js
-import { getDetector, addDetectListener, removeDetectListener } from 'devtool-detector'
+import { getDetector, addDetectListener, removeDetectListener, removeAllDetectListener } from 'devtool-detector'
 
 getDetector().setEnable(true)
 
@@ -59,6 +59,8 @@ const listener = (isDevtoolOpen) => {
 addDetectListener(listener) // regist callback
 
 removeDetectListener(listener) // unregist callback
+
+removeAllDetectListener() // unregist all callbacks
 ```
 
 ## Options
