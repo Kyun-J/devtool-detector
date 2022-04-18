@@ -108,7 +108,7 @@ import { BrowserDetector } from 'devtool-detector'
 BrowserDetector.chrome = 'console-date'
 BrowserDetector.firefox = 'debugger'
 ```
-However, each browser has a different detector.  
+However, each browser has a different operation detector.  
 The default setting is as follows:
 ```js
 chrome: 'debugger'
