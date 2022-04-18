@@ -104,9 +104,9 @@ The detailed types of detectors are as follows:
 Can set up the detector to work on a browser-specific basis as follows:  
 At this time, it can only be set before `getDetector()` is first called.
 ```js
-import { BrowserDetectorConfig } from 'devtool-detector'
-BrowserDetectorConfig.chrome = 'console-date'
-BrowserDetectorConfig.firefox = 'debugger'
+import { BrowserDetector } from 'devtool-detector'
+BrowserDetector.chrome = 'console-date'
+BrowserDetector.firefox = 'debugger'
 ```
 However, each browser has a different detector.  
 The default setting is as follows:

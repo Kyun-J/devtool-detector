@@ -17,7 +17,7 @@ const isIE = /trident/i.test(userAgent) || /msie/i.test(userAgent)
 const isEdgeLegacy = /edge/i.test(userAgent)
 const isWebkit = /webkit/i.test(userAgent) && !isEdgeLegacy
 
-const BrowserDetectorConfig = {
+const BrowserDetector = {
   chrome: 'debugger',
   edgeLegacy: 'console-elem',
   ie: 'console-elem',
@@ -27,7 +27,7 @@ const BrowserDetectorConfig = {
   default: 'debugger'
 }
 
-Object.seal(BrowserDetectorConfig)
+Object.seal(BrowserDetector)
 
 const getBrouserName = () => {
   if (isIE) return 'ie'
@@ -40,7 +40,7 @@ const getBrouserName = () => {
 }
 
 const defineDetector = () => {
-  const detector = BrowserDetectorConfig[getBrouserName()]
+  const detector = BrowserDetector[getBrouserName()]
   switch (detector) {
     case 'console-elem': return ElemDetector
     case 'console-date': return DateDetector
@@ -50,7 +50,7 @@ const defineDetector = () => {
   }
 }
 
-export { BrowserDetectorConfig }
+export { BrowserDetector }
 export const getDetector = () => {
   if (_detector) return _detector
   else {

@@ -54,7 +54,7 @@ export {
   ConsoleDetectorSetting,
   BrowserDetectorConfig,
 }; // type export
-export declare const BrowserDetectorConfig: BrowserDetectorConfig;
+export declare const BrowserDetector: BrowserDetectorConfig;
 export const getDetector: () => DebugDetector | ConsoleDetector;
 export const addDetectListener: (listener: DevToolDetectListener) => void;
 export const removeDetectListener: (listener: DevToolDetectListener) => void;

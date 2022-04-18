@@ -104,9 +104,9 @@ detector.setting.clearConsole = false
 다음과 같이 브라우저별로 동작할 감지기를 설정할 수 있습니다.  
 이때, 반드시 `getDetector()`가 최초 호출되기 이전에만 설정할 수 있습니다.
 ```js
-import { BrowserDetectorConfig } from 'devtool-detector'
-BrowserDetectorConfig.chrome = 'console-date'
-BrowserDetectorConfig.firefox = 'debugger'
+import { BrowserDetector } from 'devtool-detector'
+BrowserDetector.chrome = 'console-date'
+BrowserDetector.firefox = 'debugger'
 ```
 단, 브라우저별로 동작하는 감지기가 다릅니다.  
 기본값으로는 아래와 같이 설정되어 있습니다.

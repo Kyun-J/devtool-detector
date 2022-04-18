@@ -1,5 +1,5 @@
-requirejs(['../index.js'], ({ getDetector, addDetectListener, BrowserDetectorConfig }) => {
-  // BrowserDetectorConfig.chrome = 'console-date'
+requirejs(['../index.js'], ({ getDetector, addDetectListener, BrowserDetector }) => {
+  // BrowserDetector.chrome = 'console-date'
   const detector = getDetector()
   // detector.setEnable(true)
   detector.enable = true
