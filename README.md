@@ -1,6 +1,6 @@
 # Devtool-detector
 
-Very simple detector to detect devtool open or close.  
+A simple, lightweight library that detects whether browser devtools are open or closed.
 
 ## Install
 ```
@@ -126,4 +126,5 @@ Safari
 Edge(Legacy)  
 ie(Polyfill required)
 ## Todo
-Browser/Version-Specific Detector Settings
+Browser/Version-Specific detector settings  
+react hooks, vue mixin detector

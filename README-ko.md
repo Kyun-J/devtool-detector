@@ -1,6 +1,6 @@
 # Devtool-detector
 
-관리자 도구의 열림/닫힘 여부를 판단하는 간단한 라이브러리 입니다.
+관리자 도구의 열림/닫힘 여부를 판단하는 간단하고 가벼운 라이브러리 입니다.
 
 ## 설치
 ```
@@ -126,4 +126,5 @@ Safari
 Edge(Legacy)  
 ie(Polyfill required)
 ## Todo
-브라우저/버전별 감지기 설정
+브라우저/버전별 감지기 설정  
+react hook, vue mixin 감지기
