@@ -67,6 +67,9 @@ const Detector = {
   get enable() {
     return _isEnable
   },
+  set enable(enable) {
+    _isEnable = enable
+  },
   setEnable(enable) {
     if (enable === _isEnable) return
     if (enable) {

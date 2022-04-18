@@ -11,8 +11,7 @@ const date = new Date()
 date.toString = () => {
   _isDetectOpen = true
   return ''
-};
-
+}
 
 const setting = {
   waitConsole: 10,
@@ -25,7 +24,8 @@ const detectStart = () => nextScopeTimeout = setTimeout(detectEvent, setting.nex
 
 const detectEvent = () => {
   _isDetectOpen = false
-  console.log(date)
+  if (console.table) console.table({ date: date })
+  else console.log(date)
   console.clear()
   waitConsoleTimeout = setTimeout(() => {
     if (_isDetectOpen !== _isDevtoolOpen) {
@@ -46,6 +46,9 @@ const Detector = {
   },
   get enable() {
     return _isEnable
+  },
+  set enable(enable) {
+    _isEnable = enable
   },
   setEnable(enable) {
     if (enable === _isEnable) return

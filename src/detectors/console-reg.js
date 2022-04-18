@@ -24,7 +24,8 @@ const detectStart = () => nextScopeTimeout = setTimeout(detectEvent, setting.nex
 
 const detectEvent = () => {
   _isDetectOpen = false
-  console.table({ reg: reg })
+  if (console.table) console.table({ reg: reg })
+  else console.log(reg)
   console.clear()
   waitConsoleTimeout = setTimeout(() => {
     if (_isDetectOpen !== _isDevtoolOpen) {
@@ -44,6 +45,9 @@ const Detector = {
   },
   get enable() {
     return _isEnable
+  },
+  set enable(enable) {
+    _isEnable = enable
   },
   setEnable(enable) {
     if (enable === _isEnable) return

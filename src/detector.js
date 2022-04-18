@@ -3,24 +3,19 @@ import DateDetector from './detectors/console-date'
 import RegDetector from './detectors/console-reg'
 import DebugDetector from './detectors/debug'
 
-const userAgent = globalThis.navigator.userAgent
+let _detector = null
 
-const isChrome = typeof globalThis.window.chrome !== 'undefined' || /chrome/i.test(userAgent) || /CriOS/i.test(userAgent)
-const isSafari = (typeof globalThis.window.safari !== 'undefined' && (globalThis.window.safari.pushNotification.toString() === '[object SafariRemoteNotification]')) || (/safari/i.test(userAgent) && !isChrome)
-const isFirefox = 'InstallTrigger' in globalThis.window || /firefox/i.test(userAgent)
+const userAgent = (() => {
+  if (globalThis.navigator) return globalThis.navigator.userAgent
+  else return ''
+})()
+
+const isChrome = typeof globalThis.chrome !== 'undefined' || /chrome/i.test(userAgent) || /CriOS/i.test(userAgent)
+const isSafari = (/safari/i.test(userAgent) && !isChrome) || (typeof globalThis.safari !== 'undefined' && (globalThis.safari.pushNotification.toString() === '[object SafariRemoteNotification]'))
+const isFirefox = 'InstallTrigger' in globalThis || /firefox/i.test(userAgent)
 const isIE = /trident/i.test(userAgent) || /msie/i.test(userAgent)
 const isEdgeLegacy = /edge/i.test(userAgent)
-const isWebkit = /webkit/i.test(userAgent) && !isEdge
-
-const getBrouserName = () => {
-  if (isIE) return 'ie'
-  if (isFirefox) return 'firefox'
-  if (isEdgeLegacy) return 'edge'
-  if (isSafari) return 'safari'
-  if (isChrome) return 'chrome'
-  if (isWebkit) return 'webkit'
-  return 'other'
-}
+const isWebkit = /webkit/i.test(userAgent) && !isEdgeLegacy
 
 const BrowserDetectorConfig = {
   chrome: 'debugger',
@@ -32,10 +27,19 @@ const BrowserDetectorConfig = {
   default: 'debugger'
 }
 
-Object.freeze(BrowserDetectorConfig)
+Object.seal(BrowserDetectorConfig)
 
-export { BrowserDetectorConfig }
-export const getDetector = () => {
+const getBrouserName = () => {
+  if (isIE) return 'ie'
+  if (isFirefox) return 'firefox'
+  if (isEdgeLegacy) return 'edgeLegacy'
+  if (isSafari) return 'safari'
+  if (isChrome) return 'chrome'
+  if (isWebkit) return 'webkit'
+  return 'other'
+}
+
+const defineDetector = () => {
   const detector = BrowserDetectorConfig[getBrouserName()]
   switch (detector) {
     case 'console-elem': return ElemDetector
@@ -43,5 +47,14 @@ export const getDetector = () => {
     case 'console-reg': return RegDetector
     case 'debugger':
     default: return DebugDetector
+  }
+}
+
+export { BrowserDetectorConfig }
+export const getDetector = () => {
+  if (_detector) return _detector
+  else {
+    _detector = defineDetector()
+    return _detector
   }
 }

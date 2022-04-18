@@ -12,7 +12,7 @@ Object.defineProperty(elem, 'id', {
   get() {
     _isDetectOpen = true
   },
-});
+})
 
 const setting = {
   waitConsole: 10,
@@ -25,7 +25,8 @@ const detectStart = () => nextScopeTimeout = setTimeout(detectEvent, setting.nex
 
 const detectEvent = () => {
   _isDetectOpen = false
-  console.log(elem)
+  if (console.table) console.table({ elem: elem })
+  else console.log(elem)
   console.clear()
   waitConsoleTimeout = setTimeout(() => {
     if (_isDetectOpen !== _isDevtoolOpen) {
@@ -46,6 +47,9 @@ const Detector = {
   },
   get enable() {
     return _isEnable
+  },
+  set enable(enable) {
+    _isEnable = enable
   },
   setEnable(enable) {
     if (enable === _isEnable) return

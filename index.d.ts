@@ -22,7 +22,7 @@ interface _ConsoleDetectorSetting extends _DetectorSetting {
 interface _Detector {
   setting: _DetectorSetting;
   readonly isDevtoolOpen: boolean;
-  readonly enable: boolean;
+  enable: boolean;
   setEnable: (enable: boolean) => void;
 }
 
