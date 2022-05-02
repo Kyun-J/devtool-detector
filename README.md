@@ -119,6 +119,34 @@ firefox: 'console-reg'
 webkit: 'debugger'
 default: 'debugger'
 ```
+
+## Using in react
+
+Very simple React Hook Function has been written in advance and can be used immediately.
+## Install
+
+```
+npm i devtool-detector-hook
+```
+
+or
+
+```
+yarn add devtool-detector-hook
+```
+
+## Example
+
+```js
+import useDevtoolDetector from 'devtool-detector-hook'
+
+function MyComp() {
+  const isDevtoolOpen = useDevtoolDetector({ enable: true })
+
+  return <span>{isDevtoolOpen ? 'open' : 'close'}</span>
+}
+```
+
 ## Support Browsers
 Chromiume Borwser  
 Firefox  

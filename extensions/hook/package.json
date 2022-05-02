@@ -1,0 +1,36 @@
+{
+  "name": "devtool-detector-hook",
+  "version": "0.1.1",
+  "description": "React hook devtool detector",
+  "types": "index.d.ts",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {},
+  "author": "Kyun-J",
+  "license": "MIT",
+  "keywords": [
+    "devtool",
+    "detector",
+    "devtool detector",
+    "devtools",
+    "react",
+    "react hook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyun-J/devtool-detector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kyun-J/devtool-detector/issues"
+  },
+  "homepage": "https://github.com/Kyun-J/devtool-detector/extensions/hook#readme",
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0 || ^18.0"
+  },
+  "dependencies": {
+    "devtool-detector": "^0.1.1"
+  }
+}

@@ -119,6 +119,33 @@ firefox: 'console-reg'
 webkit: 'debugger'
 default: 'debugger'
 ```
+
+## React에서 사용하기
+
+매우 간단한 react hook function을 미리 작성하였으며, 바로 사용할 수 있습니다.
+## 설치
+
+```
+npm i devtool-detector-hook
+```
+
+or
+
+```
+yarn add devtool-detector-hook
+```
+
+## 사용 예
+
+```js
+import useDevtoolDetector from 'devtool-detector-hook'
+
+function MyComp() {
+  const isDevtoolOpen = useDevtoolDetector({ enable: true })
+
+  return <span>{isDevtoolOpen ? 'open' : 'close'}</span>
+}
+```
 ## 지원 브라우저
 Chromiume Borwser  
 Firefox  
@@ -127,4 +154,4 @@ Edge(Legacy)
 ie(Polyfill required)
 ## Todo
 브라우저/버전별 감지기 설정  
-react hook, vue mixin 감지기
+vue mixin 감지기
